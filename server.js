@@ -11,10 +11,6 @@ const server = http.createServer(app);
 const io = socketio(server);
 // Entry Point
 app.use(express.static(path.join(__dirname, 'public')));
-// Routing
-
-
-
 // Port
 const PORT = process.env.PORT || 3000;
 
