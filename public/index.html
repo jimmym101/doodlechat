@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>chatterBox</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/chatterbox.css">
+    <link media="screen" href="/css/all.min.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <div id="chatterContainer" class="no-select">
+        <!-- Title -->
+        <h1 class="title">doodlechat</h1>
+        <!-- Controls -->
+        <span id="colourControl" class="blue">
+            <span class="colours blue" data-colour="blue"></span>
+            <span class="colours green" data-colour="green"></span>
+            <span class="colours red" data-colour="red"></span>
+            <span class="colours purple" data-colour="purple"></span>
+            <span class="colours yellow" data-colour="yellow"></span>
+            <span class="colours black" data-colour="black"></span>
+        </span>
+        <span id="reset"><i class="fas fa-undo"></i></span>
+
+        <!-- Penpad -->
+        <canvas id="penPad"></canvas>
+        <!-- Chatbox -->
+        <div id="chatbox" class="notJoined">
+            <div class="mini">
+                <span><i class="fas fa-user"></i><sup id="count"></sup></span>
+                <span><i id="messageicon" class="fas fa-comment"></i></span>
+            </div>
+
+            <div class="small">
+                <div class="smallTitle">
+                    <h4>doodlechat</h4>
+                    <i class="fas fa-compress-alt compressChat"></i>
+                </div>
+                <div class="joinForm">
+                    <form id="joinForm" action="">
+                        <input type="text" id="username" placeholder="What's your name?" required autocomplete="off" >
+                    </form>
+                </div>
+                <div class="messageCont">
+                    <ul class="messages"></ul>
+                </div>
+                <div class="inputCont">
+                    <form id="chatForm">
+                        <input id="inputMessage" type="text" placeholder="Enter Message" required autocomplete="off" >
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End of Chatbox -->
+    </div>
+    <!-- JS Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/scrollPoly.js"></script>
+    <script src="/js/chatterbox.js"></script>
+</body>
+</html>

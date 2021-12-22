@@ -1,0 +1,427 @@
+body {
+    overflow: hidden !important;
+}
+
+#chatterContainer {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Title */
+.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    letter-spacing: 3px;
+    font-size: 40px;
+    font-weight: 100;
+    z-index: 1;
+}
+
+/* Information */
+
+
+
+
+
+/* Doodle Pad */
+#penPad {
+    z-index: 2;
+}
+
+/* Colour Control */
+#colourControl {
+    position: fixed;
+    bottom: 30px;
+    right: 240px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    background-color: #fff;
+    box-shadow: 1px 1px 8px 1px rgb(0 0 0 / 20%);
+    border: 5px solid #fff;
+    border-radius: 30px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 4;
+}
+
+body.chat #colourControl {
+    right: 360px;
+}
+
+#colourControl:hover,
+body.colourSelect #colourControl {
+    box-shadow: 1px 1px 8px 4px rgba(0,0,0,0.25);
+}
+
+body.colourSelect #colourControl {
+    height: 400px;
+}
+
+#colourControl .colours {
+    position: relative;
+    display: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+#colourControl .colours.blue {
+    background-color: blue;
+}
+
+#colourControl .colours.green {
+    background-color: green;
+}
+
+#colourControl .colours.red {
+    background-color: red;
+}
+
+#colourControl .colours.purple {
+    background-color: purple;
+}
+
+#colourControl .colours.yellow {
+    background-color: yellow;
+}
+
+#colourControl .colours.black {
+    background-color: black;
+}
+
+#colourControl.blue .colours.blue,
+#colourControl.green .colours.green,
+#colourControl.red .colours.red,
+#colourControl.purple .colours.purple,
+#colourControl.yellow .colours.yellow,
+#colourControl.black .colours.black {
+    display: block;
+}
+
+body.colourSelect #colourControl .colours.blue,
+body.colourSelect #colourControl .colours.green,
+body.colourSelect #colourControl .colours.red,
+body.colourSelect #colourControl .colours.purple,
+body.colourSelect #colourControl .colours.yellow,
+body.colourSelect #colourControl .colours.black {
+    display: block;
+    box-shadow: 0px 0px 8px 1px rgb(0 0 0 / 20%);
+}
+
+body.colourSelect #colourControl.blue .colours.blue::after,
+body.colourSelect #colourControl.green .colours.green::after,
+body.colourSelect #colourControl.red .colours.red::after,
+body.colourSelect #colourControl.purple .colours.purple::after,
+body.colourSelect #colourControl.yellow .colours.yellow::after,
+body.colourSelect #colourControl.black .colours.black::after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 22px;
+    color: #fff;
+    font-weight: 900;
+    content: "\f00c";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Reset */
+#reset {
+    position: fixed;
+    bottom: 30px;
+    right: 330px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    background-color: #fff;
+    box-shadow: 1px 1px 8px 1px rgb(0 0 0 / 20%);
+    border: 5px solid #fff;
+    border-radius: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    cursor: pointer;
+    z-index: 4;
+}
+
+#reset:hover {
+    box-shadow: 1px 1px 8px 4px rgba(0,0,0,0.25);
+}
+
+body.chat #reset {
+    right: 450px;
+}
+
+#reset i {
+    display: block;
+    font-size: 22px;
+    color: #333;
+}
+
+/* Chatbox */
+#chatbox {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+
+#chatbox:hover,
+body.chat #chatbox {
+    box-shadow: 1px 1px 8px 4px rgba(0,0,0,0.25);
+}
+
+/* Mini Size Chatbox */
+#chatbox .mini {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 60px;
+    width: 180px;
+}
+
+body.chat #chatbox .mini {
+    display: none;
+}
+
+.mini span {
+    flex-grow: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini span:first-child {
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.mini span i {
+    color: #333;
+    font-size: 24px;
+}
+
+.mini span:first-child i {
+    padding-left: 10px;
+}
+
+.mini span:last-child i {
+    position:relative;
+    padding-right: 10px;
+}
+
+.mini span:last-child i.hasNew::after {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    top: -4px;
+    right: 5px;
+    border: 2px solid white;
+}
+
+.mini span sup {
+    color: #333;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+/* Small Size Chatbox */
+body.chat #chatbox {
+    cursor:default;
+    background-color: #f5f5f5;
+}
+
+#chatbox .small {
+    display: none;
+}
+
+body.chat #chatbox .small {
+    display: block;
+    width: 300px;
+    height: 400px;
+}
+
+#chatbox .smallTitle {
+    position: relative;
+    background-color: #333;
+}
+
+#chatbox h4 {
+    margin: 0;
+    padding: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+#chatbox .smallTitle i {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    color: #fff;
+    transform: translate(0, -50%);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Join Chat */
+#chatbox .joinForm {
+    display: none;
+}
+
+body.chat #chatbox.notJoined .joinForm {
+    display: block;
+}
+
+.joinForm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#joinForm {
+    margin: 0;
+    padding: 20px;
+}
+
+#joinForm input {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+    border-radius: 19px;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.1);
+}
+
+/* Message List */
+#chatbox .messageCont {
+    position: relative;
+    height: calc(100% - 53px);
+    width: 100%;
+    overflow: scroll;
+}
+
+#chatbox .messages {
+    display: block;
+    margin: 0;
+    padding: 15px 10px 70px 10px;
+}
+
+#chatbox .notice {
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.5;
+    margin: 0 0 15px 0;
+    display: block;
+}
+
+#chatbox .message {
+    display: block;
+    margin: 0 0 15px 0;
+    background-color: lightskyblue;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#chatbox .message.self {
+    background-color: rgb(50, 241, 232);
+}
+
+#chatbox .message.bot {
+    background-color: rgba(0,0,0,0.2)
+}
+
+#chatbox .message:last-child,
+#chatbox .notive:last-child {
+    margin: 0 0 0 0;
+}
+
+#chatbox .message span {
+    display: block;
+    font-size: 12px;
+    opacity: 0.4;
+}
+
+#chatbox .message p {
+    margin: 0;
+}
+
+/* Enter Message */
+#chatbox.notJoined .inputCont {
+    display: none;
+}
+
+.inputCont {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+}
+
+.inputCont form {
+    margin: 0;
+    padding: 0;
+}
+
+.inputCont input {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+    border-radius: 19px;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.1);
+}
+
+
+@media screen and (max-width: 629px) {
+    #colourControl {height: 44px;width: 44px;bottom: 20px;right: 160px;}
+    body.chat #colourControl {right:290px;}
+    body.colourSelect #colourControl {height:290px}
+    #colourControl .colours {height: 34px; width: 34px;}
+    #reset {height: 44px;width: 44px;bottom:20px;right: 224px;}
+    body.chat #reset {right:364px;}
+    #reset i {font-size: 16px;}
+    #chatbox {bottom: 20px;right: 20px;}
+    #chatbox .mini {height: 44px;width: 120px;}
+    .mini span i {font-size: 18px;}
+    .mini span sup {font-size: 12px;}
+    body.chat #chatbox .small {width: 250px;height: 350px;}
+}
