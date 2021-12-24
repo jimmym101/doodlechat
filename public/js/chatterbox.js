@@ -121,7 +121,10 @@ function showNewNotice(message) {
 };
 // Update user count
 socket.on('count', message => {
-    userCount.innerHTML = message;
+    userCount.innerHTML = "";
+    setTimeout(() => {
+        userCount.innerHTML = message;
+    }, 50 );
 });
 
 // Doodle Functions
