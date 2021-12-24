@@ -31,12 +31,25 @@ body {
 /* Information */
 
 
+/* Github Link */
+.ghLink {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 3;
+    color: #fff;
+    font-size: 30px;
+    opacity: 0.5;
+}
 
-
+.ghLink:hover {
+    opacity: 1;
+}
 
 /* Doodle Pad */
 #penPad {
     z-index: 2;
+    cursor: url('/images/pencil-alt-solid.svg') 1 30, crosshair;
 }
 
 /* Colour Control */
@@ -424,4 +437,8 @@ body.chat #chatbox.notJoined .joinForm {
     .mini span i {font-size: 18px;}
     .mini span sup {font-size: 12px;}
     body.chat #chatbox .small {width: 250px;height: 350px;}
+}
+
+@media screen and (max-width: 529px) {
+    .title {font-size: 22px;}
 }
