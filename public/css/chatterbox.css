@@ -13,7 +13,7 @@ body {
 
 /* Title */
 .title {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: inline-block;
@@ -345,7 +345,8 @@ body.chat #chatbox.notJoined .joinForm {
     position: relative;
     height: calc(100% - 53px);
     width: 100%;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #chatbox .messages {
