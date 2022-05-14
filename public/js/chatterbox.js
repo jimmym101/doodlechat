@@ -66,7 +66,7 @@ function Chat() {
         } else {
             newMessage.className = 'message';    
         }
-        var inner = `<span>${message.username} ${message.time}</span><p>`;
+        var inner = `<span>${message.username} ${new Date(message.time).toLocaleTimeString()}</span><p>`;
         inner += message.userMessage;
         inner += '</p>';
         newMessage.innerHTML = inner;

@@ -3,7 +3,9 @@ const messages = [];
 const doodlePaths = [];
 
 function messageFormat(username, userMessage, saveMessage) {
-    const message = {username, userMessage, time: moment().format('h:mm a')};
+    let now = new Date().getTime();
+
+    const message = {username, userMessage, time: now};
     if (saveMessage) {
         messages.push(message);
     }
@@ -11,7 +13,9 @@ function messageFormat(username, userMessage, saveMessage) {
 }
 
 function noticeFormat(username, userMessage) {
-    const message = {username, userMessage, time: moment().format('h:mm a')};
+    let now = new Date().getTime();
+
+    const message = {username, userMessage, time: now};
     return message;
 }
 
